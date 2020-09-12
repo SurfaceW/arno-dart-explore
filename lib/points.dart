@@ -5,6 +5,12 @@ library points;
 
 import 'dart:math';
 
+export 'extra.dart';
+
+part './constants.dart';
+
+final _pointsCollection = [];
+
 // work for interface
 abstract class APoint {
   var x;
