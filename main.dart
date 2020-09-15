@@ -1,6 +1,7 @@
-import 'dart:async';
-
-import 'lib/points.dart' as points show Point, PI, addOne hide ZInitializer;
+import 'dart:mirrors' show reflectClass, ClassMirror;
+import 'lib/points.dart' as points
+    show Point, APoint, PI, addOne
+    hide ZInitializer;
 import 'lib/deferred.dart' deferred as rarelyUsed;
 
 void main() {
@@ -26,6 +27,7 @@ void main() {
   // use assert
   assert(aBool.runtimeType == bool);
 
+  // try - catch - on - finally statements
   try {
     aDouble += aDouble;
   } on Exception catch (e, s) {
@@ -33,5 +35,16 @@ void main() {
     print(s);
   } finally {
     print('execute the finally {} statement');
+  }
+
+  // Reflection use introspection
+  var pointMirror = reflectClass(points.Point);
+  print('instaceMembers:');
+  for (Symbol memberName in pointMirror.instanceMembers.keys) {
+    print(memberName);
+  }
+  print('staticMembers:');
+  for (Symbol memberName in pointMirror.staticMembers.keys) {
+    print(memberName);
   }
 }
