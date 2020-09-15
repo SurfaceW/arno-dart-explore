@@ -5,8 +5,6 @@ library points;
 
 import 'dart:math';
 
-import 'dart:svg';
-
 export 'extra.dart';
 
 part './constants.dart';
@@ -60,7 +58,6 @@ class Point3D extends Point {
   @override
   noSuchMethod(Invocation invocation) {
     // you can inject factory method here
-
     return super.noSuchMethod(invocation);
   }
 }
